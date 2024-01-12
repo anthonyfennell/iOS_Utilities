@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-final class KeyboardObserver {
+public final class KeyboardObserver {
     private weak var scrollView: UIScrollView?
     
-    init(scrollView: UIScrollView) {
+    public init(scrollView: UIScrollView) {
         self.scrollView = scrollView
         self.observeKeyboardChanges()
     }

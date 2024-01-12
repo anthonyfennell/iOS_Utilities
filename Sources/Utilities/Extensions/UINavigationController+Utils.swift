@@ -8,7 +8,7 @@
 import UIKit
 
 extension UINavigationController {
-    func set(barColor: UIColor, textColor: UIColor) {
+    public func set(barColor: UIColor, textColor: UIColor) {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = barColor
         appearance.largeTitleTextAttributes = [.foregroundColor: textColor as Any]

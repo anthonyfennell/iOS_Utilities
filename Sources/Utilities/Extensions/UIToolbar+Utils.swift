@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIToolbar {
-    static func makeToolbar(barColor: UIColor, tintColor: UIColor) -> UIToolbar {
+    public static func makeToolbar(barColor: UIColor, tintColor: UIColor) -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.barTintColor = barColor
         toolbar.tintColor = tintColor

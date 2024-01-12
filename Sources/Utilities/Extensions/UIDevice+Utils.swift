@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIDevice {
-    class func isPad() -> Bool {
+    public class func isPad() -> Bool {
         return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
     }
 }

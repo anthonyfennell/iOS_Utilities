@@ -12,58 +12,58 @@ extension DateFormatter {
         return DispatchQueue(label: "queue.dateoutputformatter")
     }()
     
-    static func formatToWeekday(_ date: Date) -> String {
+    public static func formatToWeekday(_ date: Date) -> String {
         self.formatterQueue.sync {
             return DateOutputFormatter.weekday.string(from: date)
         }
     }
     
-    static func formatToYear(_ date: Date) -> String {
+    public static func formatToYear(_ date: Date) -> String {
         self.formatterQueue.sync {
             return DateOutputFormatter.year.string(from: date)
         }
     }
     
-    static func formatToMonth(_ date: Date) -> String {
+    public static func formatToMonth(_ date: Date) -> String {
         self.formatterQueue.sync {
             return DateOutputFormatter.month.string(from: date)
         }
     }
     
-    static func formatToShortMonth(_ date: Date) -> String {
+    public static func formatToShortMonth(_ date: Date) -> String {
         self.formatterQueue.sync {
             return DateOutputFormatter.shortMonth.string(from: date)
         }
     }
     
     // MARK: - Month Year
-    static func formatToMonthCommaYear(_ date: Date) -> String {
+    public static func formatToMonthCommaYear(_ date: Date) -> String {
         self.formatterQueue.sync {
             return DateOutputFormatter.monthCommaYear.string(from: date)
         }
     }
     
-    static func formatToShortMonthYear(_ date: Date) -> String {
+    public static func formatToShortMonthYear(_ date: Date) -> String {
         self.formatterQueue.sync {
             return DateOutputFormatter.shortMonthYear.string(from: date)
         }
     }
     
     // MARK: - Month day
-    static func formatToShortMonthDay(_ date: Date) -> String {
+    public static func formatToShortMonthDay(_ date: Date) -> String {
         self.formatterQueue.sync {
             return DateOutputFormatter.shortMonthDay.string(from: date)
         }
     }
     
-    static func formatToMonthDay(_ date: Date) -> String {
+    public static func formatToMonthDay(_ date: Date) -> String {
         self.formatterQueue.sync {
             return DateOutputFormatter.monthDay.string(from: date)
         }
     }
     
     // MARK: - Month day year
-    static func formatToMonthDayCommaYear(_ date: Date) -> String {
+    public static func formatToMonthDayCommaYear(_ date: Date) -> String {
         self.formatterQueue.sync {
             return DateOutputFormatter.monthDayCommaYear.string(from: date)
         }

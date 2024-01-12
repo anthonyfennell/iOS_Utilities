@@ -7,10 +7,10 @@
 
 import UIKit
 
-struct Animate {
+public struct Animate {
     
     // MARK: - Rotate at 45 degrees
-    static func rotate360(squareView: UIView, anchorPoint: CGPoint, xAxis: CGFloat, yAxis: CGFloat, fromValue: CGFloat = 0, duration: CFTimeInterval = 4.0) {
+    public static func rotate360(squareView: UIView, anchorPoint: CGPoint, xAxis: CGFloat, yAxis: CGFloat, fromValue: CGFloat = 0, duration: CFTimeInterval = 4.0) {
         let transform = CATransform3DRotate(squareView.layer.transform, fromValue, xAxis, yAxis, 0)
         let values: [CATransform3D] = [
             CATransform3DRotate(transform, fromValue, xAxis, yAxis, 0),
@@ -27,7 +27,7 @@ struct Animate {
         squareView.layer.add(animation, forKey: "tranformME")
     }
     
-    static func rotate180AndBack(squareView: UIView, anchorPoint: CGPoint, xAxis: CGFloat, yAxis: CGFloat, duration: CFTimeInterval = 4.0) {
+    public static func rotate180AndBack(squareView: UIView, anchorPoint: CGPoint, xAxis: CGFloat, yAxis: CGFloat, duration: CFTimeInterval = 4.0) {
         let transform = squareView.layer.transform
         let values: [CATransform3D] = [
             CATransform3DRotate(transform, 0, xAxis, yAxis, 0),
@@ -44,7 +44,7 @@ struct Animate {
         squareView.layer.add(animation, forKey: "tranformME")
     }
     
-    static func hopUp(view: UIView, distance: CGFloat, completion: ((Bool) -> Void)?) {
+    public static func hopUp(view: UIView, distance: CGFloat, completion: ((Bool) -> Void)?) {
         let damping: CGFloat = 0.5 * distance / view.frame.height
         let velocity: CGFloat = 2 * distance / view.frame.height
         let duration: CGFloat = 0.3 //* distance / view.frame.height
@@ -53,7 +53,7 @@ struct Animate {
         }, completion: completion)
     }
     
-    static func hopDown(view: UIView, distance: CGFloat, completion: ((Bool) -> Void)?) {
+    public static func hopDown(view: UIView, distance: CGFloat, completion: ((Bool) -> Void)?) {
         let damping: CGFloat = 0.5 * distance / view.frame.height
         let velocity: CGFloat = 2 * distance / view.frame.height
         let duration: CGFloat = 0.3 //* distance / view.frame.height

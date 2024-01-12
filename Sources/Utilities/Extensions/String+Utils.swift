@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    func areMatchesInStringWithPattern(_ pattern : String) -> Bool {
+    public func areMatchesInStringWithPattern(_ pattern : String) -> Bool {
         let regex = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
         let matches = regex.matches(in: self, options: [], range: NSMakeRange(0, self.count))
         if let _ = matches.first {

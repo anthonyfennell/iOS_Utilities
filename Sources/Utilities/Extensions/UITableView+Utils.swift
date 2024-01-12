@@ -8,7 +8,7 @@
 import UIKit
 
 extension UITableView {
-    func setFalseFooterView() {
+    public func setFalseFooterView() {
         let view = UIView()
         view.backgroundColor = .clear
         self.tableFooterView = view

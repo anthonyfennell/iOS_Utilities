@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-    init(year: Int, month: Int, day: Int) {
+    public init(year: Int, month: Int, day: Int) {
         let calendar = Calendar.current
         var dateComponent = DateComponents()
         dateComponent.year = year
@@ -22,28 +22,28 @@ extension Date {
     }
     
     // MARK: - Component Values
-    func day() -> Int {
+    public func day() -> Int {
         return self.calender.component(.day, from: self)
     }
     
-    func weekDay() -> Int {
+    public func weekDay() -> Int {
         return self.calender.component(.weekday, from: self)
     }
     
-    func month() -> Int {
+    public func month() -> Int {
         return self.calender.component(.month, from: self)
     }
     
-    func year() -> Int {
+    public func year() -> Int {
         return self.calender.component(.year, from: self)
     }
     
-    func daysInMonth() -> Int {
+    public func daysInMonth() -> Int {
         let range = self.calender.range(of: .day, in: .month, for: self)
         return (range?.count)!
     }
     
-    func daysUntilEndOfMonth(_ today: Date) -> Int {
+    public func daysUntilEndOfMonth(_ today: Date) -> Int {
         let endOfCurrentMonth = today.asEndOfMonth()
         let days = self.daysUntil(endOfCurrentMonth)
         guard days > 0 else {
@@ -52,19 +52,19 @@ extension Date {
         return days
     }
     
-    func daysUntil(_ endDate: Date) -> Int {
+    public func daysUntil(_ endDate: Date) -> Int {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: self, to: endDate)
         return components.day!
     }
     
-    static func monthsBetween(startDate: Date, endDate: Date) -> Int {
+    public static func monthsBetween(startDate: Date, endDate: Date) -> Int {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.month], from: startDate, to: endDate)
         return components.month!
     }
     
-    static func weeksBetween(startDate: Date, endDate: Date) -> Int {
+    public static func weeksBetween(startDate: Date, endDate: Date) -> Int {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day], from: startDate, to: endDate)
         let weeks = Int(components.day! / 7)
@@ -72,59 +72,59 @@ extension Date {
     }
     
     // MARK: - Mutate
-    mutating func add(years: Int) {
+    public mutating func add(years: Int) {
         var dateComponents = DateComponents()
         dateComponents.year = years
         self = self.calender.date(byAdding: dateComponents, to: self)!
     }
     
-    mutating func add(months: Int) {
+    public mutating func add(months: Int) {
         self = self.calender.date(byAdding: .month, value: months, to: self)!
     }
     
-    mutating func add(days: Int) {
+    public mutating func add(days: Int) {
         self = self.calender.date(byAdding: .day, value: days, to: self)!
     }
     
-    mutating func add(weeks: Int) {
+    public mutating func add(weeks: Int) {
         self = self.calender.date(byAdding: .day, value: weeks * 7, to: self)!
     }
     
     // MARK: - Creation
-    func dateAdding(months: Int) -> Date {
+    public func dateAdding(months: Int) -> Date {
         return self.adding(months: months)
     }
     
-    func dateAdding(days: Int) -> Date {
+    public func dateAdding(days: Int) -> Date {
         var componenets = DateComponents()
         componenets.day = days
         return self.calender.date(byAdding: componenets, to: self)!
     }
     
-    func dateAsFirstOfMonth() -> Date {
+    public func dateAsFirstOfMonth() -> Date {
         var components = self.calender.dateComponents([.year, .month], from: self)
         components.day = 1
         return self.calender.date(from: components)!
     }
     
-    func dateAsLastOfMonth() -> Date {
+    public func dateAsLastOfMonth() -> Date {
         let lastDay = self.daysInMonth()
         return Date(year: self.year(), month: self.month(), day: lastDay)
     }
     
-    func dateAsNextMonthDayOne() -> Date {
+    public func dateAsNextMonthDayOne() -> Date {
         return createNextMonth()
     }
     
-    func dateAsFirstDayOfYear() -> Date {
+    public func dateAsFirstDayOfYear() -> Date {
         return Date(year: self.year(), month: 1, day: 1)
     }
     
-    func dateAsLastDayOfYear() -> Date {
+    public func dateAsLastDayOfYear() -> Date {
         return Date(year: self.year(), month: 12, day: 31)
     }
     
-    func asEndOfMonth() -> Date {
+    public func asEndOfMonth() -> Date {
         let calendar = Calendar.current
         var components = calendar.dateComponents([.year, .month], from: self)
         
@@ -137,13 +137,13 @@ extension Date {
         return calendar.date(from: components)!
     }
     
-    func atMidnight() -> Date {
+    public func atMidnight() -> Date {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.day, .month, .year], from: self)
         return calendar.date(from: components)!
     }
     
-    func atEndOfDay() -> Date {
+    public func atEndOfDay() -> Date {
         let calendar = Calendar.current
         var components = calendar.dateComponents([.day, .month, .year], from: self)
         components.hour = 23
@@ -153,35 +153,35 @@ extension Date {
     }
     
     // MARK: - Evaluations
-    func isWeekend() -> Bool {
+    public func isWeekend() -> Bool {
         let weekday = self.calender.component(.weekday, from: self)
         return (weekday == 1 || weekday == 7)
     }
     
     // Day
-    func isSameDayOrBefore(date: Date) -> Bool {
+    public func isSameDayOrBefore(date: Date) -> Bool {
         return self < date || isSameDayAs(date: date)
     }
     
-    func isSameDayOrAfter(date: Date) -> Bool {
+    public func isSameDayOrAfter(date: Date) -> Bool {
         return self > date || isSameDayAs(date: date)
     }
     
-    func isSameDayAs(date: Date) -> Bool {
+    public func isSameDayAs(date: Date) -> Bool {
         return (self.day() == date.day()) && (self.month() == date.month() && (self.year() == date.year()))
     }
     
-    func isBeforeThis(day: Date) -> Bool {
+    public func isBeforeThis(day: Date) -> Bool {
         return self < day && !self.isSameDayAs(date: day)
     }
     
     // Month
-    func isSameMonthAs(date: Date) -> Bool {
+    public func isSameMonthAs(date: Date) -> Bool {
         return (self.month() == date.month() && self.year() == date.year())
     }
     
     // Year
-    func isSameYearAs(date: Date) -> Bool {
+    public func isSameYearAs(date: Date) -> Bool {
         return self.year() == date.year()
     }
     

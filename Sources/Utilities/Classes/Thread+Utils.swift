@@ -7,6 +7,6 @@
 
 import Foundation
 
-func mainThread(using closure: @escaping () -> ()) {
+public func mainThread(using closure: @escaping () -> ()) {
     DispatchQueue.main.async(execute: closure)
 }

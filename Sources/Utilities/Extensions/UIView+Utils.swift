@@ -8,14 +8,14 @@
 import UIKit
 
 extension UIView {
-    static func loadFromNib<T>(nibName: String? = nil) -> T {
+    public static func loadFromNib<T>(nibName: String? = nil) -> T {
         let nibName = nibName != nil ? nibName! : String(describing: self)
         let nib = UINib(nibName: nibName, bundle: Bundle.main)
         return nib.instantiate(withOwner: self, options: nil)[0] as! T
     }
     
     // MARK: - Animation
-    func fadeOutIn(_ duration: CFTimeInterval) {
+    public func fadeOutIn(_ duration: CFTimeInterval) {
         let animation = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name:
             CAMediaTimingFunctionName.easeInEaseOut)
@@ -24,7 +24,7 @@ extension UIView {
         layer.add(animation, forKey: CATransitionType.fade.rawValue)
     }
     
-    func transitionFromLeft(_ duration: CFTimeInterval) {
+    public func transitionFromLeft(_ duration: CFTimeInterval) {
         let animation = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name:
             CAMediaTimingFunctionName.easeOut)
@@ -34,7 +34,7 @@ extension UIView {
         layer.add(animation, forKey: CATransitionSubtype.fromLeft.rawValue)
     }
     
-    func transitionFromRight(_ duration: CFTimeInterval) {
+    public func transitionFromRight(_ duration: CFTimeInterval) {
         let animation = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name:
             CAMediaTimingFunctionName.easeOut)

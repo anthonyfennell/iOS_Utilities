@@ -8,14 +8,14 @@
 import Foundation
 
 extension Int {
-    func format(with formatter: NumberFormatter) -> String {
+    public func format(with formatter: NumberFormatter) -> String {
         guard let score = formatter.string(from: NSNumber(value: self)) else {
             return "\(self)"
         }
         return score
     }
     
-    func ordinal() -> String {
+    public func ordinal() -> String {
         if self >= 10 {
             let number = self / 10
             let tensDigit = number % 10
