@@ -1,3 +1,3 @@
 # Utilities
 
-A description of this package.
+A Swift Package with helpful utilities and classes.
